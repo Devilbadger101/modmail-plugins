@@ -58,7 +58,7 @@ class ClaimPlugin(commands.Cog):
             break
 
     @commands.command()
-    @checks.has_permissions(PermissionLevel.SUPPORTER)
+    @checks.has_permissions(PermissionLevel.MODERATOR)
     @checks.thread_only()
     async def claim(self, ctx):
         if ctx.channel in self._temp_index.keys():
@@ -69,7 +69,7 @@ class ClaimPlugin(commands.Cog):
         c = await ctx.send(embed=_success_embed(auth=ctx.author))
         await c.pin(reason="Modmail thread claimed.")
 
-    @checks.has_permissions(PermissionLevel.SUPPORTER)
+    @checks.has_permissions(PermissionLevel.MODERATOR)
     @commands.command()
     async def unclaim(self, ctx):
         if ctx.channel not in self._temp_index.keys():
